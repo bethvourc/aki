@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akinator Game</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <h1 id="question">{{ question }}</h1>
+    <button id="yes" onclick="answer('yes')">Yes</button>
+    <button id="no" onclick="answer('no')">No</button>
+
+    <script>
+        function answer(userAnswer) {
+            $.ajax({
+                url: '/answer',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ "question_id": "{{ question_id }}", "answer": userAnswer }),
+                success: function(response) {
+                    $('#question').text(response.question);
+                    window.history.pushState("", "", '/?question_id=' + response.question_id);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
