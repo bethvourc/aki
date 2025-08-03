@@ -1,6 +1,3 @@
-
----
-
 # Akinator-like Game Project
 
 ## Overview
@@ -54,5 +51,3 @@ Alternatively, see the GitHub documentation on [creating a pull request](https:/
 
 ## License
 This project is licensed under the [MIT License](LICENSE.md).
-
----
